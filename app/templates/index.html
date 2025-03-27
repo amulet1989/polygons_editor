@@ -47,6 +47,11 @@
         #camera-buttons .delete-btn:hover {
             background: #cc0000;
         }
+        #main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
         #canvas-container {
             flex: 1;
             overflow: auto;
@@ -54,6 +59,23 @@
         canvas {
             border: 1px solid #ccc;
             display: block;
+        }
+        #coords-display {
+            width: 300px;
+            padding: 10px;
+            background: #f0f0f0;
+            border-left: 1px solid #ccc;
+            overflow-y: auto;
+        }
+        #coords-text {
+            width: 100%;
+            height: 100%;
+            resize: none;
+            font-family: monospace;
+            font-size: 12px;
+            border: none;
+            background: transparent;
+            outline: none;
         }
     </style>
 </head>
@@ -79,8 +101,13 @@
         </div>
         <div id="camera-buttons"></div>
     </div>
-    <div id="canvas-container">
-        <canvas id="canvas"></canvas>
+    <div id="main-container">
+        <div id="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div id="coords-display">
+            <textarea id="coords-text" readonly></textarea>
+        </div>
     </div>
     <script src="/static/script.js"></script>
 </body>

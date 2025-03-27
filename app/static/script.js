@@ -81,6 +81,7 @@ function loadProject() {
         });
     } else {
         document.getElementById('camera-buttons').innerHTML = '';
+        document.getElementById('coords-text').value = '';
     }
 }
 
@@ -147,6 +148,7 @@ function deleteCamera(cameraName) {
                 currentCamera = null;
                 canvas.clear();
                 canvas.setBackgroundImage(null);
+                document.getElementById('coords-text').value = '';
             }
             loadProject();
             alert(`Cámara "${cameraName}" eliminada`);
@@ -178,6 +180,7 @@ function deleteProject() {
             loadProjects();
             document.getElementById('projectSelect').value = '';
             document.getElementById('camera-buttons').innerHTML = '';
+            document.getElementById('coords-text').value = '';
             alert('Proyecto eliminado');
         } else {
             alert('Error al eliminar el proyecto');
@@ -366,6 +369,16 @@ function drawPolygons() {
         }
     });
     canvas.renderAll();
+
+    // Actualizar coordenadas en tiempo real
+    const coordsText = document.getElementById('coords-text');
+    let coordsOutput = '';
+    polygons.forEach((poly, idx) => {
+        const adjustedPoly = poly.map(([x, y]) => [Math.round(x / currentScale), Math.round(y / currentScale)]);
+        coordsOutput += `Poligono ${idx + 1}: ${JSON.stringify(adjustedPoly)}\n`;
+        coordsOutput += adjustedPoly.map(([x, y]) => `${x};${y}`).join(';') + '\n';
+    });
+    coordsText.value = coordsOutput.trim();
 }
 
 function savePolygons() {
