@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "5006:5006"
+    volumes:
+      - ./projects_data:/app/projects
+volumes:
+  projects_data:

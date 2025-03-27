@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editor de Polígonos</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        body {
+            margin: 0;
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        #controls {
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        #control-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        #camera-buttons {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 5px;
+            padding: 5px;
+            background: #f0f0f0;
+            border: 1px solid #ccc;
+        }
+        #camera-buttons button {
+            white-space: nowrap;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+        #camera-buttons .delete-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #camera-buttons .delete-btn:hover {
+            background: #cc0000;
+        }
+        #canvas-container {
+            flex: 1;
+            overflow: auto;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <div id="control-buttons">
+            <input type="text" id="projectName" placeholder="Nombre del proyecto">
+            <button onclick="createProject()">Crear Proyecto</button>
+            <select id="projectSelect" onchange="loadProject()">
+                <option value="">Selecciona un proyecto</option>
+            </select>
+            <button onclick="deleteProject()">Eliminar Proyecto</button>
+            <input type="file" id="imageInput" accept=".jpg,.jpeg">
+            <input type="text" id="cameraName" placeholder="Nombre de la cámara (ej. cam_01)">
+            <button onclick="addCamera()">Añadir Cámara</button>
+            <button onclick="replaceCameraImage()">Reemplazar Imagen de Cámara</button>
+            <button onclick="savePolygons()">Guardar Polígonos (i)</button>
+            <button onclick="clearPolygons()">Borrar Todo (b)</button>
+            <button onclick="toggleCorrectionMode()">Modo Corrección (r)</button>
+            <button onclick="exportProject()">Exportar Proyecto</button>
+            <input type="file" id="importProjectInput" accept=".zip">
+            <button onclick="importProject()">Importar Proyecto</button>
+        </div>
+        <div id="camera-buttons"></div>
+    </div>
+    <div id="canvas-container">
+        <canvas id="canvas"></canvas>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>
