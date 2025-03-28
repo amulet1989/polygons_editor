@@ -182,6 +182,6 @@ pyrightconfig.json
 # Folders
 dist/
 build/
-images/
+#images/
 /projects_data
 
