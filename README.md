@@ -174,7 +174,7 @@ Poligono 3: [[96, 194], [133, 192], [135, 304], [96, 302]]
 96;194;133;192;135;304;96;302
 ```
 
-5. Guarda con i y exporta el proyecto. El archivo *Turnero_polygons.txt* tendrá el mismo contenido.
+5. Guarda con **i** y exporta el proyecto. El archivo *Turnero_polygons.txt* tendrá el mismo contenido.
 
 ## Notas
 - Dimensiones del canvas: El canvas se ajusta automáticamente a la imagen escalada más un margen de 50px a la derecha y abajo, permitiendo dibujar fuera de los límites de la imagen.
